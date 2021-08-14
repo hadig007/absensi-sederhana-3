@@ -19,10 +19,12 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2"> 
+         
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                @if(auth()->user()->level == "karyawan")
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -31,6 +33,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+           
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -45,12 +48,15 @@
                 </a>
               </li>
             </ul>
+            @endif
+            
           </li>
+          @if(auth()->user()->level == "admin")
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Presensi
+                Laporan
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -69,6 +75,7 @@
               </li>
             </ul>
           </li>
+          @endif
           <li class="nav-item">
             <a href="{{ route('logout') }}" method="post" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
